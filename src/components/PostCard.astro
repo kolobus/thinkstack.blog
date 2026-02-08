@@ -1,0 +1,30 @@
+---
+import TagList from './TagList.astro';
+
+interface Props {
+  slug: string;
+  title: string;
+  date: Date;
+  description: string;
+  tags: string[];
+}
+
+const { slug, title, date, description, tags } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="py-6">
+  <a href={`/blog/${slug}`} class="text-xl font-semibold text-gray-900 hover:text-accent no-underline">
+    {title}
+  </a>
+  <time class="block text-sm text-gray-500 mt-1" datetime={date.toISOString()}>
+    {formattedDate}
+  </time>
+  <p class="text-gray-600 mt-2 mb-3">{description}</p>
+  <TagList tags={tags} />
+</article>

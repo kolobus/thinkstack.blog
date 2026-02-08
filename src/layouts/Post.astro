@@ -1,0 +1,59 @@
+---
+import Base from './Base.astro';
+import TagList from '../components/TagList.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  cover?: string;
+  author: string;
+}
+
+const { title, description, date, tags, cover, author } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Base title={title} description={description} ogType="article" publishedDate={date} tags={tags}>
+  <article>
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
+      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+        <time datetime={date.toISOString()}>{formattedDate}</time>
+        <span>&middot;</span>
+        <span>{author}</span>
+      </div>
+      <TagList tags={tags} />
+    </header>
+
+    {cover && (
+      <img src={cover} alt="" class="w-full rounded-lg mb-8" />
+    )}
+
+    <div class="prose lg:prose-lg max-w-none">
+      <slot />
+    </div>
+  </article>
+</Base>
+
+<script>
+  document.querySelectorAll('pre').forEach((pre) => {
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', async () => {
+      const code = pre.querySelector('code');
+      if (!code) return;
+      await navigator.clipboard.writeText(code.textContent || '');
+      btn.textContent = 'Copied!';
+      setTimeout(() => (btn.textContent = 'Copy'), 2000);
+    });
+    pre.appendChild(btn);
+  });
+</script>
