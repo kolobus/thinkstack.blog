@@ -20,7 +20,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 ---
 
-<Base title={title} description={description} ogType="article" publishedDate={date} tags={tags}>
+<Base title={title} description={description} ogImage={cover} ogType="article" publishedDate={date} tags={tags}>
   <article>
     <header class="mb-8">
       <h1 class="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
@@ -33,7 +33,10 @@ const formattedDate = date.toLocaleDateString('en-US', {
     </header>
 
     {cover && (
-      <img src={cover} alt="" class="w-full rounded-lg mb-8" />
+      <figure class="mb-8">
+        <img src={cover} alt="" class="w-full rounded-lg" />
+        <figcaption class="text-xs text-gray-400 mt-2 text-right">Image: AI generated</figcaption>
+      </figure>
     )}
 
     <div class="prose lg:prose-lg max-w-none">
