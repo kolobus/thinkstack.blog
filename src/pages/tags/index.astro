@@ -20,10 +20,10 @@ const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
     {tags.map(([tag, count]) => (
       <a
         href={`/tags/${tag}`}
-        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-blue-50 text-accent hover:bg-blue-100 no-underline font-medium"
+        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-orange-50 text-accent hover:bg-orange-100 no-underline font-medium"
       >
         {tag}
-        <span class="text-xs text-blue-400">({count})</span>
+        <span class="text-xs text-orange-400">({count})</span>
       </a>
     ))}
   </div>
