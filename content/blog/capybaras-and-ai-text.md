@@ -3,6 +3,7 @@ title: "I Asked an AI to Write About Capybaras and Things Got Weird"
 description: "What happens when you ask a language model to write about the world's chillest rodent — and what it reveals about how these models actually work."
 date: 2025-02-09
 tags: ["ai", "llm", "fun"]
+cover: "/images/capybara-cover.webp"
 author: "kolo"
 ---
 
